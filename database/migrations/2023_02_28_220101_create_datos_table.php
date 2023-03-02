@@ -6,22 +6,28 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+    /**
+     * Run the migrations.
+     */
     public function up(): void
     {
-        Schema::create('tabla_uf', function (Blueprint $table) {
+        Schema::create('datos', function (Blueprint $table) {
             $table->id();
             $table->string('nombreIndicador');
             $table->string('codigoIndicador');
             $table->string('unidadMedidaIndicador');
-            $table->float('valorIndicador');
-            $table->date('fechaIndicador');
-            $table->string('tiempoIndicador');
+            $table->double('valorIndicador');
+            $table->string('fechaIndicador');
+            $table->string('tiempoIndicador')->nullable();
             $table->string('origenIndicador');
         });
     }
 
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('tabla_uf');
+        Schema::dropIfExists('datos');
     }
 };
